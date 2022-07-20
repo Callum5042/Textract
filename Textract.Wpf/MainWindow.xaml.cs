@@ -1,19 +1,8 @@
 ﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Textract.Wpf
 {
@@ -32,12 +21,7 @@ namespace Textract.Wpf
             CurrentStatus.Text = "Processing Image";
 
             // Configure open file dialog box
-            var dialog = new OpenFileDialog
-            {
-                // FileName = "Image", // Default file name
-                // DefaultExt = ".txt", // Default file extension
-                // Filter = "Text documents (.txt)|*.txt" // Filter files by extension
-            };
+            var dialog = new OpenFileDialog();
 
             // Show open file dialog box
             bool? result = dialog.ShowDialog();
@@ -57,20 +41,46 @@ namespace Textract.Wpf
                 // var imageSourceConverter = new ImageSourceConverter();
                 // Image.Source = (BitmapSource?)imageSourceConverter.ConvertFrom(memory.ToArray());
 
-                // Extract text
-                var text = TextExtractor.ExtractFromBytes(memory.ToArray());
-                ProcessedTextbox.Text = text;
-
-                // Update status
-                CurrentStatus.Text = "Image Processed";
-                StatusTextLength.Text = $"{text.Length} Characters";
-                StatusWordCount.Text = $"{text.Split(' ').Length} Words";
+                ExtractTextFromBytesAndUpdateWindow(memory.ToArray());
             }
+        }
+
+        private void ExtractTextFromBytesAndUpdateWindow(byte[] memory)
+        {
+            // Extract text
+            var text = TextExtractor.ExtractFromBytes(memory);
+            ProcessedTextbox.Text = text;
+            ProcessedTextbox.CaretIndex = text.Length;
+
+            // Update status
+            CurrentStatus.Text = "Image Processed";
+            StatusTextLength.Text = $"{text.Length} Characters";
+            StatusWordCount.Text = $"{text.Split(' ').Length} Words";
         }
 
         private void MenuItem_Click_Exit(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.V && (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+            {
+                if (Clipboard.ContainsImage())
+                {
+                    var bitmap = Clipboard.GetImage();
+
+                    using var memory = new MemoryStream();
+
+                    var encoder = new PngBitmapEncoder();
+                    encoder.Frames.Add(BitmapFrame.Create(bitmap));
+                    encoder.Save(memory);
+                    memory.Seek(0, SeekOrigin.Begin);
+
+                    ExtractTextFromBytesAndUpdateWindow(memory.ToArray());
+                }
+            }
         }
     }
 }

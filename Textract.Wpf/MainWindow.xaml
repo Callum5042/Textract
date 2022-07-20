@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Textract.Wpf"
         mc:Ignorable="d"
-        Title="Textract" Height="450" Width="800" ResizeMode="CanResizeWithGrip">
+        Title="Textract" Height="450" Width="800" ResizeMode="CanResizeWithGrip" PreviewKeyDown="Window_KeyDown">
+    
     <DockPanel>
 
         <Menu DockPanel.Dock="Top" Background="White" BorderThickness="0,0,0,2" BorderBrush="#FFF0F0F0">
