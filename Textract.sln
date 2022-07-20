@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Textract.Wpf", "Textract.Wpf\Textract.Wpf.csproj", "{99726419-4816-4938-8BAC-A103E6A29B16}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Textract", "Textract\Textract.csproj", "{67AA472B-EED0-4528-9256-31A2380B8075}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{99726419-4816-4938-8BAC-A103E6A29B16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99726419-4816-4938-8BAC-A103E6A29B16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99726419-4816-4938-8BAC-A103E6A29B16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67AA472B-EED0-4528-9256-31A2380B8075}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67AA472B-EED0-4528-9256-31A2380B8075}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67AA472B-EED0-4528-9256-31A2380B8075}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67AA472B-EED0-4528-9256-31A2380B8075}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

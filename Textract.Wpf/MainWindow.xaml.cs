@@ -52,8 +52,15 @@ namespace Textract.Wpf
                 await file.CopyToAsync(memory);
 
                 // Load bitmap
-                var imageSourceConverter = new ImageSourceConverter();
-                Image.Source = (BitmapSource?)imageSourceConverter.ConvertFrom(memory.ToArray());
+                // var imageSourceConverter = new ImageSourceConverter();
+                // Image.Source = (BitmapSource?)imageSourceConverter.ConvertFrom(memory.ToArray());
+
+                // Extract text
+                var text = TextExtractor.ExtractFromBytes(memory.ToArray());
+                ProcessedTextbox.Text = text;
+
+                EmptyStackPanel.Visibility = Visibility.Collapsed;
+                ProcessedTextbox.Visibility = Visibility.Visible;
             }
         }
 

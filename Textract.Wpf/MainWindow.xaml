@@ -14,27 +14,23 @@
                 <Separator />
                 <MenuItem Header="Exit" Click="MenuItem_Click_Exit" />
             </MenuItem>
-            
+
         </Menu>
 
-        <Image x:Name="Image" Stretch="None" />
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>Awaiting Image</StatusBarItem>
+        </StatusBar>
 
-        <!--<StatusBar DockPanel.Dock="Bottom">
-            <StatusBarItem></StatusBarItem>
-        </StatusBar>-->
-        
-        <!--<Grid>
+        <Grid>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                --><!--<ColumnDefinition Width="Auto" />--><!--
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+            <StackPanel x:Name="EmptyStackPanel" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible">
+                <Label Content="Load Image" FontStyle="Italic" />
+            </StackPanel>
+            
+            <TextBox x:Name="ProcessedTextbox" Visibility="Collapsed" Margin="1" Padding="2" IsReadOnly="False" AcceptsReturn="True" BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible" />
 
-            --><!--<TextBox Grid.Column="0" AcceptsReturn="True" />-->
-            <!--<GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="LightGray" ShowsPreview="True" Width="1" />--><!--
+        </Grid>
 
-        </Grid>-->
 
     </DockPanel>
 </Window>
