@@ -8,27 +8,43 @@
         Title="Textract" Height="450" Width="800" ResizeMode="CanResizeWithGrip">
     <DockPanel>
 
-        <Menu DockPanel.Dock="Top" Background="White">
+        <Menu DockPanel.Dock="Top" Background="White" BorderThickness="0,0,0,2" BorderBrush="#FFF0F0F0">
             <MenuItem Header="File">
                 <MenuItem Header="Open" Click="MenuItem_Click_Load" />
                 <Separator />
                 <MenuItem Header="Exit" Click="MenuItem_Click_Exit" />
             </MenuItem>
-
         </Menu>
 
-        <StatusBar DockPanel.Dock="Bottom">
-            <StatusBarItem>Awaiting Image</StatusBarItem>
+        <StatusBar DockPanel.Dock="Bottom" BorderThickness="0,1,0,0" BorderBrush="LightGray">
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <StatusBarItem Grid.Column="0">
+                <TextBlock x:Name="CurrentStatus" Text="Awaiting Image" />
+            </StatusBarItem>
+            <Separator Grid.Column="1" Background="LightGray"/>
+            <StatusBarItem Grid.Column="2">
+                <TextBlock x:Name="StatusTextLength" />
+            </StatusBarItem>
+            <Separator Grid.Column="3" Background="LightGray"/>
+            <StatusBarItem Grid.Column="4">
+                <TextBlock x:Name="StatusWordCount" />
+            </StatusBarItem>
         </StatusBar>
 
         <Grid>
-
-            <StackPanel x:Name="EmptyStackPanel" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible">
-                <Label Content="Load Image" FontStyle="Italic" />
-            </StackPanel>
-            
-            <TextBox x:Name="ProcessedTextbox" Visibility="Collapsed" Margin="1" Padding="2" IsReadOnly="False" AcceptsReturn="True" BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible" />
-
+            <TextBox x:Name="ProcessedTextbox" Padding="2" IsReadOnly="False" AcceptsReturn="True" BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible" />
         </Grid>
 
 

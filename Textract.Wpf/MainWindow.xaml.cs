@@ -29,6 +29,8 @@ namespace Textract.Wpf
 
         private async void MenuItem_Click_Load(object sender, RoutedEventArgs e)
         {
+            CurrentStatus.Text = "Processing Image";
+
             // Configure open file dialog box
             var dialog = new OpenFileDialog
             {
@@ -59,8 +61,10 @@ namespace Textract.Wpf
                 var text = TextExtractor.ExtractFromBytes(memory.ToArray());
                 ProcessedTextbox.Text = text;
 
-                EmptyStackPanel.Visibility = Visibility.Collapsed;
-                ProcessedTextbox.Visibility = Visibility.Visible;
+                // Update status
+                CurrentStatus.Text = "Image Processed";
+                StatusTextLength.Text = $"{text.Length} Characters";
+                StatusWordCount.Text = $"{text.Split(' ').Length} Words";
             }
         }
 
