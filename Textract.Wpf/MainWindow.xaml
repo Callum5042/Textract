@@ -15,6 +15,9 @@
                 <Separator />
                 <MenuItem Header="Exit" Click="MenuItem_Click_Exit" />
             </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="About" Click="MenuItem_Click_About" />
+            </MenuItem>
         </Menu>
 
         <StatusBar DockPanel.Dock="Bottom" BorderThickness="0,1,0,0" BorderBrush="LightGray">

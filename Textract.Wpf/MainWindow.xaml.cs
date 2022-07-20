@@ -1,5 +1,7 @@
 ﻿using Microsoft.Win32;
 using System.IO;
+using System.Reflection;
+using System.Text;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
@@ -81,6 +83,18 @@ namespace Textract.Wpf
                     ExtractTextFromBytesAndUpdateWindow(memory.ToArray());
                 }
             }
+        }
+
+        private void MenuItem_Click_About(object sender, RoutedEventArgs e)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var version = assembly.GetName().Version;
+
+            var text = new StringBuilder();
+            text.AppendLine("Created by Callum Anning");
+            text.AppendLine($"Version: {version?.ToString(3)}");
+
+            MessageBox.Show(text.ToString(), "About", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

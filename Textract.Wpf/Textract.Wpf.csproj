@@ -5,6 +5,14 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <Authors>Callum Anning</Authors>
+    <Product>Textract</Product>
+    <Description>Extract text from images</Description>
+    <PackageProjectUrl>https://github.com/Callum5042/Textract</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Callum5042/Textract</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <FileVersion>1.0.22720</FileVersion>
+    <AssemblyVersion>1.0.22720</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
